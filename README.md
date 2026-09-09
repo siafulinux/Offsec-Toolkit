@@ -4,7 +4,7 @@ A practical, environment-aware installer for a collection of offensive-security,
 
 **OffSec-Toolkit** is shortened to **OTK** for command-line and project branding.
 
-![OffSec-Toolkit](https://github.com/siafulinux/hack-tools/blob/main/Hack%20Tools.png)
+![OffSec-Toolkit](https://github.com/siafulinux/hack-tools/blob/main/otk.png)
 
 ---
 
