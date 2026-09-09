@@ -1,83 +1,85 @@
-# Offensive Tools Installation Script
+# OffSec-Toolkit | OTK
 
-### Overview
+A practical, environment-aware installer for a collection of offensive-security, penetration-testing, security-auditing, OSINT, wireless, password-auditing, and web-security tools on Debian-based Linux systems.
 
-This script is designed to automate the installation of essential "offensive tools" for penetration testing, ethical hacking, password cracking, blue teaming, red teaming, and related activities. It has been tested on Debian 12 but should work on similar Debian-based distributions.
+**OffSec-Toolkit** is shortened to **OTK** for command-line and project branding.
 
-Additionally, the script sets up a monthly cron job to keep installed tools updated automatically.
+![OffSec-Toolkit](https://github.com/siafulinux/hack-tools/blob/main/Hack%20Tools.png)
 
-<img src='https://github.com/siafulinux/hack-tools/blob/main/Hack%20Tools.png'></img>
+---
 
-### Disclaimer
+## Overview
 
-By using this script, you acknowledge that you are fully responsible for any potential damage, failures, or issues that may arise from using or installing the tools. I am not responsible for any data loss, system instability, or other adverse effects caused by running this script. Use at your own risk.
+**OffSec-Toolkit (OTK)** automates the installation of a practical collection of security tools while being designed to coexist with existing Debian-based security environments.
 
-### Requirements
+OTK can be used on:
 
-  * Debian 12 (tested, but other Debian-based distributions may work)
-  * Root privileges for installation and cron job setup
+- Debian
+- Ubuntu
+- Kali Linux
+- Parrot OS
+- Linux Mint
+- Pop!_OS
+- Other compatible Debian-based distributions
 
-### Installation
-    git clone https://github.com/siafulinux/hack-tools.git
-    cd hack-tools
-    chmod +x install_hack_tools.sh
-    sudo ./install_hack_tools.sh
+The installer is designed to be **idempotent and environment-aware**. Rather than assuming the system is empty, OTK checks for tools that are already installed before attempting to install them.
 
+This makes it suitable for both relatively clean Debian installations and established security-focused distributions such as Kali Linux and Parrot OS.
 
-<img src='https://github.com/siafulinux/hack-tools/blob/main/Hack%20Tools%202.png'></img>
+---
 
-## Applications installed:
+## Features
 
-### PRIVACY
+### 🔎 Existing Tool Detection
 
-  * Proxychains
-  * TOR
-  
-### SCANNING
+OTK checks for existing tools using multiple methods:
 
-  * nmap
+- Debian/Ubuntu package database
+- Executables already available in `$PATH`
+- Known installation locations
+- Existing Git repositories
+- Existing wordlists
+- Existing PTF installations
+- Existing Burp Suite installations
+- Existing Metasploit installations
 
-### EXPLOITING
+If a tool is already present, OTK skips it instead of unnecessarily installing another copy.
 
-  * MetaSploit
-  * Nikto
-  * GoBuster
+---
 
-### PASSWORD CRACKING
+### 🛡️ Security-Distribution Awareness
 
-  * Hashid
-  * Hashcat
-  * John the Ripper
+OTK specifically detects:
 
-### WEB HACKING
+- Kali Linux
+- Parrot OS
 
-  * BurpSuite
-  * SQLmap
-  * Hydra
+When an existing security distribution is detected, OTK takes a more conservative approach.
 
-### WIFI / PACKET SNIFFING
+OTK does **not**:
 
-  * Wireshark
-  * TShark
-  * Bettercap
-  * Aircrack-ng
-  * Wifite
+- Add Kali repositories
+- Add Parrot repositories
+- Replace existing APT repositories
+- Install Kali or Parrot metapackages
+- Remove existing security tools
+- Automatically perform a full system upgrade
+- Deliberately overwrite existing tool installations
 
-### OSINT
+The goal is to add useful missing tools without turning an existing security workstation into a package-management tug-of-war.
 
-  * Sherlock
-  * theHarvester
-  * Recon-ng
+---
 
-### SOCIAL ENGINEERING
+### 🔄 Safe to Re-Run
 
-  * Penetration Tool Kit
+OTK is designed to be safely re-run.
 
-# Wordlists
+Existing installations are detected and skipped whenever possible.
 
-  * SecLists
-  * DirBuster
-  * usernames.txt
-  * rockyou.txt
+For example:
 
-
+```text
+[=] Nmap is already installed through APT.
+[=] Hashcat is already installed through APT.
+[=] Burp Suite already exists in PATH.
+[=] SecLists already exists.
