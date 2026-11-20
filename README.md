@@ -1,3 +1,12 @@
+---
+## What this is — for hiring managers
+
+Environment-aware installer for penetration-testing, security-auditing, OSINT, wireless, password-auditing, and web-security tools on Debian-based Linux (Debian, Ubuntu, Kali, Parrot, Mint, Pop!_OS). It checks what is already installed and skips it, so it is safe to run on a clean system or an existing security distro.
+
+**Skills shown:** Bash scripting, Linux system administration, package management, idempotent automation.
+
+---
+
 # OffSec-Toolkit | OTK
 
 A practical, environment-aware installer for a collection of offensive-security, penetration-testing, security-auditing, OSINT, wireless, password-auditing, and web-security tools on Debian-based Linux systems.
